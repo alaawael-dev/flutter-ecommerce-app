@@ -1,0 +1,114 @@
+name: ecommerce
+description: "A new Flutter project."
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  # State / Routing / DI
+  get: ^4.6.1
+
+  # Dates & formatting
+  jiffy: ^6.4.3   
+  intl: ^0.20.2
+
+
+  # HTTP / API
+  http: ^1.2.2
+
+  # Images
+  cached_network_image: ^3.2.0
+  image_picker: ^1.2.0
+  image_pickers: ^2.0.0+2
+
+  # Animations
+  show_up_animation: ^2.0.0
+  auto_animated: ^3.0.1
+
+  # Google Maps / location / polyline
+  flutter_polyline_points: ^3.1.0
+  google_maps_flutter: ^2.1.5
+  geolocator: ^14.0.2
+  geocoding: ^4.0.0
+
+  # Firebase & Notifications
+  firebase_core: ^4.2.1
+  firebase_messaging: ^16.0.4
+  flutter_local_notifications: ^19.5.0
+  cloud_firestore: ^6.1.0
+
+  # Local Data Cache
+  sqflite: ^2.0.2
+  shared_preferences: ^2.0.15
+  path: ^1.8.0
+
+  # QR / Scan
+  qr_flutter: ^4.0.0
+  mobile_scanner: ^7.1.3
+
+  # Utilities
+  grouped_list: ^6.0.0
+  url_launcher: ^6.1.2
+  dropdown_search: ^6.0.2
+  badges: ^3.1.2
+
+  # Icons
+  flutter_svg: ^2.2.2
+  font_awesome_flutter: ^10.1.0
+  fluttericon: ^2.0.0
+
+  # Functional programming
+  dartz: ^0.10.1
+
+  # Google Auth
+  google_sign_in: ^7.2.0
+
+  # Dev / Responsiveness
+  device_preview: ^1.3.1
+  responsive_builder: ^0.7.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/to/resolution-aware-images
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/to/asset-from-package
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  fonts:
+    - family: Cairo
+      fonts:
+        - asset: assets/fonts/Cairo/Cairo-Regular.ttf
+        - asset: assets/fonts/Cairo/Cairo-Bold.ttf
+          weight: 700
+          # style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/to/font-from-package
