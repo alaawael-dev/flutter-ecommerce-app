@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 
 class CustomButtonAuth extends StatelessWidget {
   final String buttonText;
-  final void Function()? onPressed;
-  const CustomButtonAuth({super.key, required this.buttonText, this.onPressed});
+  final void Function() onPressed;
+  const CustomButtonAuth({
+    super.key,
+    required this.buttonText,
+    required this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {

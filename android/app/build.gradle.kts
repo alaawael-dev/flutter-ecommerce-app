@@ -6,6 +6,7 @@ plugins {
     id("kotlin-android")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -48,8 +49,17 @@ flutter {
 
 // ✅ Desugar dependency (required for Java 11 features)
 dependencies {
+    // Firebase BoM (required for all Firebase features)
+    implementation(platform("com.google.firebase:firebase-bom:34.5.0"))
+
+    // Firebase Cloud Messaging (Notifications)
+    implementation("com.google.firebase:firebase-messaging")
+
+    // Keep your desugaring dependency
     add("coreLibraryDesugaring", "com.android.tools:desugar_jdk_libs:2.1.4")
 }
+
+
 
 // ✅ Ensure all compile tasks target Java 11 and suppress obsolete warnings
 tasks.withType<KotlinCompile>().configureEach {

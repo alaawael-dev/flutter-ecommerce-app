@@ -1,6 +1,4 @@
 import 'package:ecommerce/controller/onboarding_controller.dart';
-import 'package:ecommerce/core/consts/colors.dart';
-import 'package:ecommerce/data/datasource/static/static.dart';
 import 'package:ecommerce/view/widget/onboarding/custombutton.dart';
 import 'package:ecommerce/view/widget/onboarding/customdot.dart';
 import 'package:ecommerce/view/widget/onboarding/customslider.dart';

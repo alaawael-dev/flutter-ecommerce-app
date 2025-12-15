@@ -1,16 +1,19 @@
+import 'package:ecommerce/binding.dart';
 import 'package:ecommerce/core/consts/colors.dart';
 import 'package:ecommerce/core/localization/changelocal.dart';
 import 'package:ecommerce/core/localization/translation.dart';
+import 'package:ecommerce/core/notifications/fcm_service.dart';
+import 'package:ecommerce/core/notifications/notification_helper.dart';
 import 'package:ecommerce/core/services/services.dart';
 import 'package:ecommerce/routes.dart';
-import 'package:ecommerce/view/screen/language.dart';
-import 'package:ecommerce/view/screen/onboarding.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initialServices();
+  await NotificationHelper.init();
+  await FCMService().init();
   runApp(const MyApp());
 }
 
@@ -25,20 +28,21 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       locale: controller.language,
       theme: ThemeData(
+        // useMaterial3: false,
         textTheme: TextTheme(
           headlineLarge: TextStyle(
             inherit: false,
             fontWeight: FontWeight.bold,
             fontSize: 20,
             color: AppColor.black,
-            textBaseline: TextBaseline.alphabetic, 
+            textBaseline: TextBaseline.alphabetic,
           ),
           headlineMedium: TextStyle(
             inherit: false,
             fontWeight: FontWeight.bold,
             fontSize: 24,
             color: AppColor.black,
-            textBaseline: TextBaseline.alphabetic, 
+            textBaseline: TextBaseline.alphabetic,
           ),
           bodyLarge: TextStyle(
             inherit: false,
@@ -46,14 +50,12 @@ class MyApp extends StatelessWidget {
             fontSize: 17,
             fontWeight: FontWeight.bold,
             color: AppColor.grey,
-            textBaseline: TextBaseline.alphabetic, 
+            textBaseline: TextBaseline.alphabetic,
           ),
-
         ),
       ),
-      home: Language(),
-      routes: routes,
+      getPages: routes,
+      initialBinding: MyBinding(),
     );
   }
 }
-  

@@ -1,7 +1,5 @@
-import 'package:ecommerce/core/consts/colors.dart';
 import 'package:ecommerce/core/consts/routes.dart';
 import 'package:ecommerce/core/localization/changelocal.dart';
-import 'package:ecommerce/view/screen/onboarding.dart';
 import 'package:ecommerce/view/widget/langbutton.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

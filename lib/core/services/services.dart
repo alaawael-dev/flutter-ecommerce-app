@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
@@ -7,6 +8,7 @@ class MyServices extends GetxService {
   late SharedPreferences sharedPref;
 
   Future<MyServices> init() async {
+    await Firebase.initializeApp();
     sharedPref = await SharedPreferences.getInstance();
     return this;
   }

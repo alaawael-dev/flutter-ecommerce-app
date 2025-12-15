@@ -1,4 +1,19 @@
 class AppRoute {
-  static const String login = "/login";
-  static const String onBoarding = "/onboarding";
+  // Auth
+  static const String login                = "/login";
+  static const String signup               = "/signup";
+  static const String forgetPassword       = "/forgetpassword";
+  static const String verifyCode           = "/verifycode";
+  static const String verifyCodeSignUp     = "/verifycodesignup";
+  static const String resetPassword        = "/resetpassword";
+  static const String successResetPassword = "/successresetpassword";
+  static const String successSignUp        = "/successsignup";
+  // On Boarding
+  static const String onBoarding           = "/onboarding";
+  // Home
+  static const String home                 = "/home";
+  static const String items                = "/items";
+  static const String productDetails       = "/productdetails";
+  static const String favorite             = "/favorite";
+  static const String cart                 = "/cart";
 }
