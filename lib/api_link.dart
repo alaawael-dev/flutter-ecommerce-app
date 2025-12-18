@@ -1,5 +1,5 @@
 class AppLink {
-  static const String server = "http://192.168.1.101/aura";
+  static const String server = "http://192.168.1.10/aura";
   static const String test = "$server/test.php";
   // Images
   static const String imagePath = "$server/uploads";
