@@ -12,10 +12,12 @@ abstract class ProductDetailsController extends GetxController {
 }
 
 class ProductDetailsControllerImp extends ProductDetailsController {
+  CartController cartController = Get.put(CartController());
+
   late ItemModel itemModel;
   int itemCount = 0;
   late StatusRequest statusRequest;
-  
+
   List subItems = [
     {"name": "red", "id": "1", "active": "0"},
     {"name": "yellow", "id": "2", "active": "1"},
@@ -24,10 +26,7 @@ class ProductDetailsControllerImp extends ProductDetailsController {
 
   @override
   initialData() async {
-    statusRequest = StatusRequest.loading;
     itemModel = Get.arguments["itemModel"];
-    statusRequest = StatusRequest.success;
-    update();
   }
 
   @override
@@ -39,11 +38,10 @@ class ProductDetailsControllerImp extends ProductDetailsController {
   @override
   remove() {
     if (itemCount > 0) {
-
       itemCount--;
     }
     update();
-  } 
+  }
 
   @override
   goToCart() {

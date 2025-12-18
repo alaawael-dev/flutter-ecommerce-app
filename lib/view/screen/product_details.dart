@@ -13,63 +13,68 @@ class ProductDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ProductDetailsControllerImp controller = Get.put(
+      ProductDetailsControllerImp(),
+    );
     return Scaffold(
-      bottomNavigationBar: GetBuilder<ProductDetailsControllerImp>(
-        init: ProductDetailsControllerImp(),
-        builder: (controller) => CustomBottomButton(
-          title: "Go to Cart",
-          onPressed: () {
-            controller.goToCart();
-          },
-        ),
-      ),
-      body: GetBuilder<ProductDetailsControllerImp>(
-        init: ProductDetailsControllerImp(),
-        builder: (controller) {
-          return Container(
-            child: ListView(
-              children: [
-                CustomProductPicture(),
-                SizedBox(height: 100),
-                Container(
-                  padding: EdgeInsets.all(20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "${controller.itemModel.itemsName}",
-                        style: Theme.of(context).textTheme.headlineLarge!
-                            .copyWith(color: AppColor.primarycolor),
-                      ),
-                      CustomPriceAmount(
-                        onAdd: () {
-                        },
-                        onRemove: () {
-                          controller.remove();
-                        },
-                        amount: "${controller.itemCount}",
-                        price: "${controller.itemModel.itemsPrice}\$",
-                      ),
-                      SizedBox(height: 5),
-                      Text(
-                        "${controller.itemModel.itemsDesc} ${controller.itemModel.itemsDesc} ${controller.itemModel.itemsDesc}",
-                        style: TextStyle(color: AppColor.grey),
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        "Colors",
-                        style: Theme.of(context).textTheme.headlineLarge!
-                            .copyWith(color: AppColor.primarycolor),
-                      ),
-                      SizedBox(height: 8),
-                      CustomSubItem(),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          );
+      bottomNavigationBar: CustomBottomButton(
+        title: "Go to Cart",
+        onPressed: () {
+          controller.goToCart();
         },
+      ),
+
+      body: Container(
+        child: ListView(
+          children: [
+            CustomProductPicture(),
+            SizedBox(height: 100),
+            Container(
+              padding: EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "${controller.itemModel.itemsName}",
+                    style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                      color: AppColor.primarycolor,
+                    ),
+                  ),
+                  CustomPriceAmount(
+                    onAdd: () {
+                      controller.cartController.addData(
+                        controller.itemModel.itemsId.toString(),
+                        controller.itemModel.itemsName!,
+                      );
+                    },
+                    onRemove: () {
+                      controller.cartController.deleteData(
+                        controller.itemModel.itemsId.toString(),
+                        controller.itemModel.itemsName!,
+                      );
+                    },
+                    amount: "${controller.itemCount}",
+                    price: "${controller.itemModel.itemsPrice}\$",
+                  ),
+                  SizedBox(height: 5),
+                  Text(
+                    "${controller.itemModel.itemsDesc} ${controller.itemModel.itemsDesc} ${controller.itemModel.itemsDesc}",
+                    style: TextStyle(color: AppColor.grey),
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    "Colors",
+                    style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                      color: AppColor.primarycolor,
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  CustomSubItem(),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
