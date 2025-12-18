@@ -18,7 +18,9 @@ class HomeScreen extends StatelessWidget {
             backgroundColor: AppColor.primarycolor,
             shape: CircleBorder(),
             elevation: 0,
-            onPressed: () {},
+            onPressed: () {
+              // controller.goToCart();
+            },
             child: Icon(Icons.shopping_basket_outlined, color: Colors.white),
           ),
           floatingActionButtonLocation:

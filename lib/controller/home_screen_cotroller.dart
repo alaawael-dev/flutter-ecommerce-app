@@ -1,3 +1,4 @@
+import 'package:ecommerce/core/consts/routes.dart';
 import 'package:ecommerce/view/screen/homepage.dart';
 import 'package:ecommerce/view/screen/settings.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,6 +7,7 @@ import 'package:get/get.dart';
 
 abstract class HomeScreenController extends GetxController {
   changePage(int i);
+  goToCart();
 }
 
 class HomeScreenControllerImp extends HomeScreenController {
@@ -29,5 +31,10 @@ class HomeScreenControllerImp extends HomeScreenController {
   changePage(int i) {
     currentPage = i;
     update();
+  }
+
+  @override
+  goToCart() {
+    Get.toNamed(AppRoute.cart);
   }
 }

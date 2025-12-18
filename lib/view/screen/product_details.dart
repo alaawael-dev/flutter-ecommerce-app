@@ -43,9 +43,6 @@ class ProductDetails extends StatelessWidget {
                       ),
                       CustomPriceAmount(
                         onAdd: () {
-                          controller.cartController.addCart(
-                            controller.itemModel.itemsId.toString(),
-                          );
                         },
                         onRemove: () {
                           controller.remove();

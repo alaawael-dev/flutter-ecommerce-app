@@ -13,7 +13,6 @@ abstract class ProductDetailsController extends GetxController {
 
 class ProductDetailsControllerImp extends ProductDetailsController {
   late ItemModel itemModel;
-  CartControllerImp cartController = Get.put(CartControllerImp());
   int itemCount = 0;
   late StatusRequest statusRequest;
   
@@ -27,14 +26,12 @@ class ProductDetailsControllerImp extends ProductDetailsController {
   initialData() async {
     statusRequest = StatusRequest.loading;
     itemModel = Get.arguments["itemModel"];
-    itemCount = await cartController.count(itemModel.itemsId.toString());
     statusRequest = StatusRequest.success;
     update();
   }
 
   @override
   add() {
-    cartController.addCart(itemModel.itemsId!.toString(), itemModel.itemsName!);
     itemCount++;
     update();
   }
@@ -42,10 +39,7 @@ class ProductDetailsControllerImp extends ProductDetailsController {
   @override
   remove() {
     if (itemCount > 0) {
-      cartController.deleteCart(
-        itemModel.itemsId!.toString(),
-        itemModel.itemsName!,
-      );
+
       itemCount--;
     }
     update();
