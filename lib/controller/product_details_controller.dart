@@ -26,11 +26,16 @@ class ProductDetailsControllerImp extends ProductDetailsController {
 
   @override
   initialData() async {
+    statusRequest = StatusRequest.loading;
     itemModel = Get.arguments["itemModel"];
+    itemCount = await cartController.viewCount(itemModel.itemsId.toString());
+    statusRequest = StatusRequest.success;
+    update();
   }
 
   @override
   add() {
+    cartController.addData(itemModel.itemsId.toString(), itemModel.itemsName!);
     itemCount++;
     update();
   }
@@ -38,6 +43,10 @@ class ProductDetailsControllerImp extends ProductDetailsController {
   @override
   remove() {
     if (itemCount > 0) {
+      cartController.deleteData(
+        itemModel.itemsId.toString(),
+        itemModel.itemsName!,
+      );
       itemCount--;
     }
     update();

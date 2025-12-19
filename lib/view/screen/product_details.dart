@@ -24,56 +24,50 @@ class ProductDetails extends StatelessWidget {
         },
       ),
 
-      body: Container(
-        child: ListView(
-          children: [
-            CustomProductPicture(),
-            SizedBox(height: 100),
-            Container(
-              padding: EdgeInsets.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "${controller.itemModel.itemsName}",
-                    style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                      color: AppColor.primarycolor,
+      body: GetBuilder<ProductDetailsControllerImp>(
+        builder: (controller) => Container(
+          child: ListView(
+            children: [
+              CustomProductPicture(),
+              SizedBox(height: 100),
+              Container(
+                padding: EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "${controller.itemModel.itemsName}",
+                      style: Theme.of(context).textTheme.headlineLarge!
+                          .copyWith(color: AppColor.primarycolor),
                     ),
-                  ),
-                  CustomPriceAmount(
-                    onAdd: () {
-                      controller.cartController.addData(
-                        controller.itemModel.itemsId.toString(),
-                        controller.itemModel.itemsName!,
-                      );
-                    },
-                    onRemove: () {
-                      controller.cartController.deleteData(
-                        controller.itemModel.itemsId.toString(),
-                        controller.itemModel.itemsName!,
-                      );
-                    },
-                    amount: "${controller.itemCount}",
-                    price: "${controller.itemModel.itemsPrice}\$",
-                  ),
-                  SizedBox(height: 5),
-                  Text(
-                    "${controller.itemModel.itemsDesc} ${controller.itemModel.itemsDesc} ${controller.itemModel.itemsDesc}",
-                    style: TextStyle(color: AppColor.grey),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    "Colors",
-                    style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                      color: AppColor.primarycolor,
+                    CustomPriceAmount(
+                      onAdd: () {
+                        controller.add();
+                      },
+                      onRemove: () {
+                        controller.remove();
+                      },
+                      amount: "${controller.itemCount}",
+                      price: "${controller.itemModel.itemsPrice}\$",
                     ),
-                  ),
-                  SizedBox(height: 8),
-                  CustomSubItem(),
-                ],
+                    SizedBox(height: 5),
+                    Text(
+                      "${controller.itemModel.itemsDesc} ${controller.itemModel.itemsDesc} ${controller.itemModel.itemsDesc}",
+                      style: TextStyle(color: AppColor.grey),
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      "Colors",
+                      style: Theme.of(context).textTheme.headlineLarge!
+                          .copyWith(color: AppColor.primarycolor),
+                    ),
+                    SizedBox(height: 8),
+                    CustomSubItem(),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
