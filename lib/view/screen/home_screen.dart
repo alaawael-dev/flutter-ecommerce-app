@@ -1,6 +1,6 @@
 import 'package:ecommerce/controller/home_screen_cotroller.dart';
 import 'package:ecommerce/core/consts/colors.dart';
-
+import 'package:ecommerce/core/consts/routes.dart';
 import 'package:ecommerce/view/widget/home/custom_bottom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
             shape: CircleBorder(),
             elevation: 0,
             onPressed: () {
-              // controller.goToCart();
+              Get.toNamed(AppRoute.cart);
             },
             child: Icon(Icons.shopping_basket_outlined, color: Colors.white),
           ),

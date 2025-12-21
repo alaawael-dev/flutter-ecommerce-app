@@ -6,7 +6,13 @@ class CustomPriceAmount extends StatelessWidget {
   final void Function() onRemove;
   final String amount;
   final String price;
-  const CustomPriceAmount({super.key, required this.onAdd, required this.onRemove, required this.amount, required this.price});
+  const CustomPriceAmount({
+    super.key,
+    required this.onAdd,
+    required this.onRemove,
+    required this.amount,
+    required this.price,
+  });
 
   @override
   Widget build(BuildContext context) {
