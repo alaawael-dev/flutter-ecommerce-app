@@ -12,11 +12,11 @@ abstract class ProductDetailsController extends GetxController {
 }
 
 class ProductDetailsControllerImp extends ProductDetailsController {
-  CartController cartController = Get.put(CartController());
+  CartController cartController = Get.find<CartController>();
 
   late ItemModel itemModel;
   int itemCount = 0;
-  late StatusRequest statusRequest;
+  StatusRequest statusRequest = StatusRequest.none;
 
   List subItems = [
     {"name": "red", "id": "1", "active": "0"},
@@ -34,32 +34,45 @@ class ProductDetailsControllerImp extends ProductDetailsController {
   }
 
   @override
-  add() {
-    cartController.addData(itemModel.itemsId.toString(), itemModel.itemsName!);
-    itemCount++;
-    update();
+  add() async {
+    await cartController.addData(
+      itemModel.itemsId.toString(),
+      itemName: itemModel.itemsName!,
+    );
+    await syncItemCount();
   }
 
   @override
-  remove() {
+  remove() async {
     if (itemCount > 0) {
-      cartController.deleteData(
+      await cartController.deleteData(
         itemModel.itemsId.toString(),
-        itemModel.itemsName!,
+        itemName: itemModel.itemsName!,
       );
-      itemCount--;
     }
-    update();
+    await syncItemCount();
   }
 
   @override
-  goToCart() {
-    Get.toNamed(AppRoute.cart);
+  goToCart() async {
+    await Get.toNamed(AppRoute.cart);
+    await syncItemCount();
+  }
+
+  Future<void> syncItemCount() async {
+    itemCount = await cartController.viewCount(itemModel.itemsId.toString());
+    update();
   }
 
   @override
   void onInit() {
     initialData();
     super.onInit();
+  }
+
+  @override
+  void onReady() {
+    syncItemCount();
+    super.onReady();
   }
 }
