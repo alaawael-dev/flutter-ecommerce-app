@@ -37,7 +37,7 @@ class ProductDetailsControllerImp extends ProductDetailsController {
   add() async {
     await cartController.addData(
       itemModel.itemsId.toString(),
-      itemName: itemModel.itemsName!,
+      itemName: itemModel.itemsName,
     );
     await syncItemCount();
   }
@@ -47,7 +47,7 @@ class ProductDetailsControllerImp extends ProductDetailsController {
     if (itemCount > 0) {
       await cartController.deleteData(
         itemModel.itemsId.toString(),
-        itemName: itemModel.itemsName!,
+        itemName: itemModel.itemsName,
       );
     }
     await syncItemCount();

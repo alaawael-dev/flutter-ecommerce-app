@@ -1,11 +1,17 @@
+import 'package:ecommerce/controller/home_controller.dart';
 import 'package:ecommerce/core/classes/StatusRequest.dart';
 import 'package:ecommerce/core/functions/handlingdata.dart';
 import 'package:ecommerce/core/services/services.dart';
 import 'package:ecommerce/data/datasource/remote/view_favorite_data.dart';
 import 'package:ecommerce/data/model/favorite_model.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-class FavoritePageController extends GetxController {
+abstract class FavoritePageController extends SearchingController{
+
+}
+
+class FavoritePageControllerImp extends FavoritePageController {
   MyServices myServices = Get.find();
 
   FavoritePageData favPage = FavoritePageData(Get.find());
@@ -42,6 +48,7 @@ class FavoritePageController extends GetxController {
 
   @override
   void onInit() {
+    search = TextEditingController();
     getData();
     super.onInit();
   }

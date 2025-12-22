@@ -6,7 +6,7 @@ import 'package:ecommerce/data/model/favorite_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CustomFavoriteItemsView extends GetView<FavoritePageController> {
+class CustomFavoriteItemsView extends GetView<FavoritePageControllerImp> {
   final FavoriteModel itemModel;
   const CustomFavoriteItemsView({super.key, required this.itemModel});
 
@@ -80,7 +80,7 @@ class CustomFavoriteItemsView extends GetView<FavoritePageController> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    GetBuilder<FavoritePageController>(
+                    GetBuilder<FavoritePageControllerImp>(
                       builder: (controller) => IconButton(
                         onPressed: () {
                           controller.delete(itemModel.favoriteId.toString());

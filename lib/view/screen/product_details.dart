@@ -51,7 +51,7 @@ class ProductDetails extends StatelessWidget {
                           controller.remove();
                         },
                         amount: "${controller.itemCount}",
-                        price: "${controller.itemModel.itemsPrice}\$",
+                        price: "${controller.itemModel.itemsAfterDiscount}\$",
                       ),
                       SizedBox(height: 5),
                       Text(

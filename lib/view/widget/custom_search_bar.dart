@@ -4,11 +4,16 @@ class CustomSearchBar extends StatelessWidget {
   final String searchTitle;
   final void Function() onPressedSearch;
   final void Function() onPressedFavorite;
+  final TextEditingController myController;
+  final void Function(String) onChange;
+
   const CustomSearchBar({
     super.key,
     required this.searchTitle,
     required this.onPressedSearch,
     required this.onPressedFavorite,
+    required this.myController,
+    required this.onChange,
   });
 
   @override
@@ -19,6 +24,8 @@ class CustomSearchBar extends StatelessWidget {
         children: [
           Expanded(
             child: TextFormField(
+              onChanged: onChange,
+              controller: myController,
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.grey[200],

@@ -8,4 +8,5 @@ class AppImageAssets {
   static const String onBoardingImageFour  = "$imagePath/onboardingfour.png";
   static const String person               = "$imagePath/person.png";
   static const String loading              = "$lottiePath/loading.json";
+  static const String sale                 = "$imagePath/sale.png";
 }
