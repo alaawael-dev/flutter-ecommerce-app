@@ -3,6 +3,8 @@ import 'package:ecommerce/core/functions/handlingdata.dart';
 import 'package:ecommerce/core/services/services.dart';
 import 'package:ecommerce/data/datasource/remote/cart_data.dart';
 import 'package:ecommerce/data/model/cart_model.dart';
+import 'package:ecommerce/data/model/coupon_model.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class CartController extends GetxController {
@@ -14,8 +16,15 @@ class CartController extends GetxController {
 
   List<CartModel> data = [];
 
+  TextEditingController? coupController;
+
   double priceOrders = 0.0;
   int totalCountItems = 0;
+
+  CouponModel? couponModel;
+
+  int coupDiscount = 0;
+  String? coupName;
 
   addData(String itemsId, {String? itemName}) async {
     statusRequest = StatusRequest.loading;
@@ -109,6 +118,30 @@ class CartController extends GetxController {
     update();
   }
 
+  getCoupon() async {
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await cartData.getCoupon(coupController!.text);
+    print(response);
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      if (response['status'] == "success") {
+        Map<String, dynamic> coupondata = response['data'];
+        couponModel = CouponModel.fromJson(coupondata);
+        coupDiscount = couponModel!.couponDiscount;
+        coupName = couponModel!.couponName;
+      } else {
+        coupDiscount = 0;
+        coupName = null;
+      }
+    }
+    update();
+  }
+
+  getFinalPrice() {
+    return priceOrders - (priceOrders * coupDiscount / 100);
+  }
+
   resetVarCart() {
     totalCountItems = 0;
     priceOrders = 0.0;
@@ -122,6 +155,7 @@ class CartController extends GetxController {
   @override
   void onInit() {
     view();
+    coupController = TextEditingController();
     super.onInit();
   }
 }

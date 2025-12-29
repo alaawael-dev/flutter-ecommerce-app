@@ -4,23 +4,25 @@ import 'package:ecommerce/view/widget/cart/bottom_navbar_cart.dart';
 import 'package:ecommerce/view/widget/cart/cart_product_cart.dart';
 import 'package:ecommerce/view/widget/cart/top_total_items.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class Cart extends StatelessWidget {
   const Cart({super.key});
 
   @override
   Widget build(BuildContext context) {
-    CartController cartController = Get.find<CartController>();
     return Scaffold(
       appBar: AppBar(title: const Text('Cart'), centerTitle: true),
       bottomNavigationBar: GetBuilder<CartController>(
         builder: (controller) => BottomNavbarCart(
+          coupController: controller.coupController!,
+          onCoupon: () {
+            controller.getCoupon();
+          },
           price: "${controller.priceOrders}",
+          coupon: controller.coupDiscount.toString(),
           shipping: "600",
-          total: "600",
+          total: "${controller.getFinalPrice()}",
         ),
       ),
       body: GetBuilder<CartController>(
@@ -44,8 +46,8 @@ class Cart extends StatelessWidget {
                       (index) => CartProductCart(
                         imageName: "${controller.data[index].itemsImage}",
                         title: "${controller.data[index].itemsName}",
-                        price: "${controller.data[index].itemsPrice}",
-                        count: "${controller.data[index].itemscount}",
+                        price: "${controller.data[index].itemsprice}",
+                        count: "${controller.data[index].countitems}",
                         onAdd: () async {
                           await controller.addData(
                             controller.data[index].itemsId.toString(),

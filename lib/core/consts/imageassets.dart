@@ -9,4 +9,6 @@ class AppImageAssets {
   static const String person               = "$imagePath/person.png";
   static const String loading              = "$lottiePath/loading.json";
   static const String sale                 = "$imagePath/sale.png";
+  static const String delivery             = "$imagePath/deli.png";
+  static const String drive                = "$imagePath/drive.png";
 }

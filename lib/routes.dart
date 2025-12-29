@@ -1,5 +1,8 @@
 import 'package:ecommerce/core/consts/routes.dart';
 import 'package:ecommerce/middleware/mymiddleware.dart';
+import 'package:ecommerce/view/screen/address/add_address.dart';
+import 'package:ecommerce/view/screen/address/add_address_details.dart';
+import 'package:ecommerce/view/screen/address/view_address.dart';
 import 'package:ecommerce/view/screen/auth/forget%20password/forgetpassword.dart';
 import 'package:ecommerce/view/screen/auth/verifycodesignup.dart';
 import 'package:ecommerce/view/screen/auth/login.dart';
@@ -9,12 +12,14 @@ import 'package:ecommerce/view/screen/auth/successignup.dart';
 import 'package:ecommerce/view/screen/auth/forget%20password/successreset.dart';
 import 'package:ecommerce/view/screen/auth/forget%20password/verifycode.dart';
 import 'package:ecommerce/view/screen/cart.dart';
+import 'package:ecommerce/view/screen/checkout.dart';
 import 'package:ecommerce/view/screen/favorite_page.dart';
 import 'package:ecommerce/view/screen/home_screen.dart';
 import 'package:ecommerce/view/screen/items.dart';
 import 'package:ecommerce/view/screen/language.dart';
 import 'package:ecommerce/view/screen/onboarding.dart';
 import 'package:ecommerce/view/screen/product_details.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
 List<GetPage<dynamic>>? routes = [
@@ -37,4 +42,8 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoute.productDetails,       page: () => ProductDetails()),
   GetPage(name: AppRoute.favorite,             page: () => const FavoritePage()),
   GetPage(name: AppRoute.cart,                 page: () => Cart()),
+  GetPage(name: AppRoute.addAddress,           page: () => AddAddress()),
+  GetPage(name: AppRoute.addAddressDetails,    page: () => AddAddressDetails()),
+  GetPage(name: AppRoute.viewAddress,          page: () => ViewAddress()),
+  GetPage(name: AppRoute.checkout,             page: () => Checkout()),
 ];

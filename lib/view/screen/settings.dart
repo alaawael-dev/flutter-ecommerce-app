@@ -47,9 +47,14 @@ class Settings extends StatelessWidget {
                   context: context,
                   tiles: List.generate(controller.cardInfo.length, (index) {
                     return ListTile(
-                      onTap: controller.cardInfo[index]["isLogout"] == true
-                          ? controller.logout
-                          : null,
+                      onTap: () {
+                        if (controller.cardInfo[index]["isLogout"] == true) {
+                          controller.logout();
+                        } else if (controller.cardInfo[index]["route"] !=
+                            null) {
+                          Get.toNamed(controller.cardInfo[index]["route"]);
+                        }
+                      },
                       title: Text(controller.cardInfo[index]["title"]),
                       trailing: Icon(controller.cardInfo[index]["trailing"]),
                     );

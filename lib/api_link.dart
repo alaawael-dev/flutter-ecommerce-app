@@ -29,4 +29,10 @@ class AppLink {
   static const String viewCart = "$server/cart/view.php";
   static const String deleteCart = "$server/cart/delete.php";
   static const String getCount = "$server/cart/get_count.php";
+  static const String getCoupon = "$server/coupon/verify_coupon.php";
+  // Address
+  static const String addAddress = "$server/address/add.php";
+  static const String getAddress = "$server/address/view.php";
+  static const String deleteAddress = "$server/address/delete.php";
+  static const String updateAddress = "$server/address/update.php";
 }

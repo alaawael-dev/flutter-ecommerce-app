@@ -30,8 +30,13 @@ class CartData {
   }
 
   view(String usersid) async {
-    var response = await crud.postData(AppLink.viewCart, {
-      "usersid": usersid,
+    var response = await crud.postData(AppLink.viewCart, {"usersid": usersid});
+    return response.fold((l) => l, (r) => r);
+  }
+
+  getCoupon(String couponName) async {
+    var response = await crud.postData(AppLink.getCoupon, {
+      "couponname": couponName,
     });
     return response.fold((l) => l, (r) => r);
   }

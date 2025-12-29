@@ -13,7 +13,7 @@ class SettingsControllerImp extends SettingsController {
   List cardInfo = [
     {"title": "About us", "trailing": Icons.info_outline},
     {"title": "Contact us", "trailing": Icons.phone_outlined},
-    {"title": "My location", "trailing": Icons.location_on_outlined},
+    {"title": "My location", "trailing": Icons.location_on_outlined, "route": AppRoute.viewAddress,},
     {
       "title": "Disable notifications",
       "trailing": Icons.notifications_off_outlined,
