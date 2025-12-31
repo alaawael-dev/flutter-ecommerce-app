@@ -18,8 +18,9 @@ import 'package:ecommerce/view/screen/home_screen.dart';
 import 'package:ecommerce/view/screen/items.dart';
 import 'package:ecommerce/view/screen/language.dart';
 import 'package:ecommerce/view/screen/onboarding.dart';
+import 'package:ecommerce/view/screen/orders/archive_orders.dart';
+import 'package:ecommerce/view/screen/orders/pending_orders.dart';
 import 'package:ecommerce/view/screen/product_details.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
 List<GetPage<dynamic>>? routes = [
@@ -42,8 +43,12 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoute.productDetails,       page: () => ProductDetails()),
   GetPage(name: AppRoute.favorite,             page: () => const FavoritePage()),
   GetPage(name: AppRoute.cart,                 page: () => Cart()),
+  // Address
   GetPage(name: AppRoute.addAddress,           page: () => AddAddress()),
   GetPage(name: AppRoute.addAddressDetails,    page: () => AddAddressDetails()),
   GetPage(name: AppRoute.viewAddress,          page: () => ViewAddress()),
+  // Orders
   GetPage(name: AppRoute.checkout,             page: () => Checkout()),
+  GetPage(name: AppRoute.pendingOrders,        page: () => PendingOrders()),
+  GetPage(name: AppRoute.archiveOrders,        page: () => ArchiveOrders()),
 ];

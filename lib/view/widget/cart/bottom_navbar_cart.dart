@@ -1,11 +1,10 @@
 import 'package:ecommerce/controller/cart_controller.dart';
 import 'package:ecommerce/core/consts/colors.dart';
-import 'package:ecommerce/core/consts/routes.dart';
 import 'package:ecommerce/view/widget/custom_bottom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class BottomNavbarCart extends StatelessWidget {
+class BottomNavbarCart extends GetView<CartController> {
   final String price;
   final String coupon;
   final String shipping;
@@ -104,7 +103,7 @@ class BottomNavbarCart extends StatelessWidget {
         ),
         CustomBottomButton(
           onPressed: () {
-            Get.toNamed(AppRoute.checkout);
+            controller.goToCheckout();
           },
           title: "Place Order",
         ),

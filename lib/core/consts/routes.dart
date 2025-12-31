@@ -19,6 +19,8 @@ class AppRoute {
   static const String addAddress           = "/addaddress";
   static const String addAddressDetails    = "/addaddressdetails";
   static const String viewAddress          = "/viewaddress";
-
+  // Orders
   static const String checkout             = "/checkout";
+  static const String pendingOrders        = "/pendingorders";
+  static const String archiveOrders        = "/archiveorders";
 }

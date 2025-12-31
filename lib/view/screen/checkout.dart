@@ -15,11 +15,13 @@ class Checkout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.find<CheckoutController>;
+    CheckoutController controller = Get.find<CheckoutController>();
     return Scaffold(
       appBar: AppBar(title: const Text('Checkout'), centerTitle: true),
       bottomNavigationBar: CheckoutBottomButton(
-        onPressed: () {},
+        onPressed: () {
+          controller.orderCheckout();
+        },
         title: "Checkout",
       ),
       body: GetBuilder<CheckoutController>(
@@ -33,21 +35,21 @@ class Checkout extends StatelessWidget {
                 SizedBox(height: 20),
                 InkWell(
                   onTap: () {
-                    controller.choosePayment("cash");
+                    controller.choosePayment("0");
                   },
                   child: CheckoutPaymentMethod(
                     method: "Cash",
-                    isActive: controller.payment == "cash" ? true : false,
+                    isActive: controller.payment == "0" ? true : false,
                   ),
                 ),
                 SizedBox(height: 10),
                 InkWell(
                   onTap: () {
-                    controller.choosePayment("cards");
+                    controller.choosePayment("1");
                   },
                   child: CheckoutPaymentMethod(
                     method: "Cards",
-                    isActive: controller.payment == "cards" ? true : false,
+                    isActive: controller.payment == "1" ? true : false,
                   ),
                 ),
                 SizedBox(height: 40),
@@ -58,30 +60,30 @@ class Checkout extends StatelessWidget {
                   children: [
                     InkWell(
                       onTap: () {
-                        controller.chooseDelivery("delivery");
+                        controller.chooseDelivery("0");
                       },
                       child: CheckoutDeliveryMethod(
                         method: "Delivery",
                         image: AppImageAssets.delivery,
-                        isActive: controller.delivery == "delivery"
+                        isActive: controller.delivery == "0"
                             ? true
                             : false,
                       ),
                     ),
                     InkWell(
                       onTap: () {
-                        controller.chooseDelivery("drive");
+                        controller.chooseDelivery("1");
                       },
                       child: CheckoutDeliveryMethod(
                         method: "Drive Thru",
                         image: AppImageAssets.drive,
-                        isActive: controller.delivery == "drive" ? true : false,
+                        isActive: controller.delivery == "1" ? true : false,
                       ),
                     ),
                   ],
                 ),
                 SizedBox(height: 40),
-                if (controller.delivery == "delivery")
+                if (controller.delivery == "0")
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -99,6 +101,7 @@ class Checkout extends StatelessWidget {
                             title: controller.data[index].street,
                             subtitle: controller.data[index].city,
                             isActive:
+                            controller.locationId != null && 
                                 int.parse(controller.locationId!) ==
                                     controller.data[index].addressId
                                 ? true

@@ -1,4 +1,5 @@
 import 'package:ecommerce/core/classes/StatusRequest.dart';
+import 'package:ecommerce/core/consts/routes.dart';
 import 'package:ecommerce/core/functions/handlingdata.dart';
 import 'package:ecommerce/core/services/services.dart';
 import 'package:ecommerce/data/datasource/remote/cart_data.dart';
@@ -25,6 +26,7 @@ class CartController extends GetxController {
 
   int coupDiscount = 0;
   String? coupName;
+  String? coupId;
 
   addData(String itemsId, {String? itemName}) async {
     statusRequest = StatusRequest.loading;
@@ -130,9 +132,11 @@ class CartController extends GetxController {
         couponModel = CouponModel.fromJson(coupondata);
         coupDiscount = couponModel!.couponDiscount;
         coupName = couponModel!.couponName;
+        coupId = couponModel!.couponId.toString();
       } else {
         coupDiscount = 0;
         coupName = null;
+        coupId = null;
       }
     }
     update();
@@ -150,6 +154,18 @@ class CartController extends GetxController {
   refreshPage() {
     resetVarCart();
     view();
+  }
+
+  goToCheckout() {
+    if (data.isEmpty) return Get.snackbar("Warning", "Your cart is empty");
+    Get.toNamed(
+      AppRoute.checkout,
+      arguments: {
+        "couponid": coupId ?? "0",
+        "priceorders": priceOrders.toString(),
+        "coupdiscount": coupDiscount.toString(),
+      },
+    );
   }
 
   @override

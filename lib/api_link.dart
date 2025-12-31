@@ -35,4 +35,7 @@ class AppLink {
   static const String getAddress = "$server/address/view.php";
   static const String deleteAddress = "$server/address/delete.php";
   static const String updateAddress = "$server/address/update.php";
+  // Orders
+  static const String checkout = "$server/orders/addorders.php";
+  static const String viewPending = "$server/orders/viewpending.php";
 }
