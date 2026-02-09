@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:ecommerce/core/notifications/notidonfig.dart';
 import 'package:ecommerce/core/services/services.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
@@ -19,6 +20,7 @@ class LocaleController extends GetxController {
 
   @override
   void onInit() {
+    fcmconfig();
     String? sharedPrefLang = myservices.sharedPref.getString("lang");
 
     if (sharedPrefLang == "ar") {

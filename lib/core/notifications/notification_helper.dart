@@ -3,19 +3,18 @@
 import 'dart:developer';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-
 class NotificationHelper {
   static final FlutterLocalNotificationsPlugin _plugin =
       FlutterLocalNotificationsPlugin();
 
   static const AndroidNotificationChannel channel = AndroidNotificationChannel(
-    'my_channel_id',
+    'high_importance_channel', // 🔥 MUST match backend
     'High Importance Notifications',
     description: 'Used for important notifications.',
-    importance: Importance.high,
+    importance: Importance.max,
   );
 
-  /// Call this once in main()
+  /// Call this once before runApp()
   static Future<void> init() async {
     const androidSettings =
         AndroidInitializationSettings('@mipmap/ic_launcher');
@@ -35,21 +34,24 @@ class NotificationHelper {
         ?.createNotificationChannel(channel);
   }
 
-  /// Show a foreground notification
   static Future<void> showNotification(RemoteMessage message) async {
     final notification = message.notification;
+    final android = message.notification?.android;
+
+    if (notification == null || android == null) return;
 
     await _plugin.show(
       notification.hashCode,
-      notification?.title ?? message.data["title"] ?? "New Message",
-      notification?.body ?? message.data["body"] ?? "",
+      notification.title ?? "New Message",
+      notification.body ?? "",
       NotificationDetails(
         android: AndroidNotificationDetails(
           channel.id,
           channel.name,
           channelDescription: channel.description,
-          importance: Importance.high,
+          importance: Importance.max,
           priority: Priority.high,
+          icon: '@mipmap/ic_launcher',
         ),
       ),
       payload: message.data.toString(),

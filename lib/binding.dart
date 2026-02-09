@@ -2,6 +2,7 @@ import 'package:ecommerce/controller/address/view_address_controller.dart';
 import 'package:ecommerce/controller/auth/signup_controller.dart';
 import 'package:ecommerce/controller/cart_controller.dart';
 import 'package:ecommerce/controller/checkout_controller.dart';
+import 'package:ecommerce/controller/orders/archived_order_controller.dart';
 import 'package:ecommerce/controller/orders/pending_controller.dart';
 import 'package:ecommerce/core/classes/crud.dart';
 import 'package:get/get.dart';
@@ -15,5 +16,6 @@ class MyBinding extends Bindings {
     Get.lazyPut(() => ViewAddressController(), fenix: true);
     Get.lazyPut(() => SignUpControllerImp(), fenix: true);
     Get.lazyPut(() => PendingController());
+    Get.lazyPut(() => ArchivedOrderController());
   }
 }

@@ -1,12 +1,12 @@
 import 'package:ecommerce/core/classes/StatusRequest.dart';
 import 'package:ecommerce/core/functions/handlingdata.dart';
 import 'package:ecommerce/core/services/services.dart';
-import 'package:ecommerce/data/datasource/remote/orders/pending_orders_data.dart';
+import 'package:ecommerce/data/datasource/remote/orders/archived_order_data.dart';
 import 'package:ecommerce/data/model/pending_orders_model.dart';
 import 'package:get/get.dart';
 
-class PendingController extends GetxController {
-  PendingOrdersData pendingData = PendingOrdersData(Get.find());
+class ArchivedOrderController extends GetxController {
+  ArchivedOrderData archivedData = ArchivedOrderData(Get.find());
 
   List<PendingOrderModel> data = [];
 
@@ -36,9 +36,11 @@ class PendingController extends GetxController {
     } else if (val == "1") {
       return "Preparing Your Order";
     } else if (val == "2") {
+      return "Your order is waiting for pickup";
+    } else if (val == "3") {
       return "Your Order Is On Its Way";
-    } else {
-      return "Archived";
+    }else {
+      return "Order Delivered!";
     }
   }
 
@@ -46,7 +48,7 @@ class PendingController extends GetxController {
     data.clear();
     statusRequest = StatusRequest.loading;
     update();
-    var response = await pendingData.getOrders(
+    var response = await archivedData.getArchivedOrders(
       myServices.sharedPref.getString("id")!,
     );
     statusRequest = handlingData(response);
@@ -54,20 +56,6 @@ class PendingController extends GetxController {
       if (response['status'] == "success") {
         List listData = response['data'];
         data.addAll(listData.map((e) => PendingOrderModel.fromJson(e)));
-      } else {
-        statusRequest = StatusRequest.failure;
-      }
-    }
-    update();
-  }
-
-  deleteOrder(String orderid) async {
-    statusRequest = StatusRequest.loading;
-    var response = await pendingData.deleteOrder(orderid);
-    statusRequest = handlingData(response);
-    if (StatusRequest.success == statusRequest) {
-      if (response['status'] == "success") {
-        refreshPage();
       } else {
         statusRequest = StatusRequest.failure;
       }

@@ -1,7 +1,8 @@
 import 'package:ecommerce/core/consts/routes.dart';
 import 'package:ecommerce/view/screen/homepage.dart';
+import 'package:ecommerce/view/screen/notifications.dart';
+import 'package:ecommerce/view/screen/offers.dart';
 import 'package:ecommerce/view/screen/settings.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,15 +16,15 @@ class HomeScreenControllerImp extends HomeScreenController {
 
   List<Widget> pagesList = [
     HomePage(),
-    Column(children: [Center(child: Text("Notification"))]),
-    Column(children: [Center(child: Text("Profile"))]),
+    NotificationsPage(),
+    Offers(),
     Settings(),
   ];
 
   List appBarTitle = [
     {"title": "Home", "icon": Icons.home},
     {"title": "Notify", "icon": Icons.notification_add_outlined},
-    {"title": "Profile", "icon": Icons.person_2_outlined},
+    {"title": "Offers", "icon": Icons.discount},
     {"title": "Settings", "icon": Icons.settings},
   ];
 

@@ -23,4 +23,8 @@ class AppRoute {
   static const String checkout             = "/checkout";
   static const String pendingOrders        = "/pendingorders";
   static const String archiveOrders        = "/archiveorders";
+  static const String notifications        = "/notifications";
+  static const String detailsPage          = "/detailspage";
+  // Offers
+  static const String offers               = "/offers";
 }

@@ -14,7 +14,7 @@ dependencies:
   cupertino_icons: ^1.0.8
 
   # State / Routing / DI
-  get: ^4.6.1
+  get: ^4.6.6
 
   # Dates & formatting
   jiffy: ^6.4.3   

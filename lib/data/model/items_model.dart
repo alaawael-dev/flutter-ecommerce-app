@@ -65,4 +65,29 @@ class ItemModel {
       categoriesDatetime: json['categories_datetime'],
     );
   }
+
+  factory ItemModel.skeleton() {
+  return ItemModel(
+    itemsId: 0,
+    itemsName: 'loading',
+    itemsNameAr: 'loading',
+    itemsDesc: 'loading',
+    itemsDescAr: 'loading',
+    itemsQuantity: 0,
+    itemsActive: 0,
+    itemsImage: '',
+    itemsPrice: 0.0,
+    itemsDiscount: 0,
+    itemsDate: '',
+    itemsAfterDiscount: 0.0,
+    itemsCat: 0,
+    categoriesId: 0,
+    categoriesName: 'loading',
+    categoriesNameAr: 'loading',
+    categoriesImage: '',
+    categoriesDatetime: '',
+  );
 }
+
+}
+

@@ -1,5 +1,5 @@
 class AppLink {
-  static const String server = "http://192.168.1.107/aura";
+  static const String server = "http://192.168.1.109/aura";
   static const String test = "$server/test.php";
   // Images
   static const String imagePath = "$server/uploads";
@@ -38,4 +38,12 @@ class AppLink {
   // Orders
   static const String checkout = "$server/orders/addorders.php";
   static const String viewPending = "$server/orders/viewpending.php";
+  static const String viewArchived = "$server/orders/archivedorder.php";
+  static const String orderDetails = "$server/orders/order_details.php";
+  static const String deleteorder = "$server/orders/deleteorder.php";
+  // Notifications
+  static const String notifications = "$server/notifications.php";
+  // Offers
+  static const String offers = "$server/offers.php";
+
 }

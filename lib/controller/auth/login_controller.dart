@@ -41,6 +41,7 @@ class LoginControllerImp extends LoginController {
             "id",
             response['data']['users_id'].toString(),
           );
+          String userid = services.sharedPref.getString("id")!;
           services.sharedPref.setString(
             "username",
             response['data']['users_name'],
@@ -54,6 +55,8 @@ class LoginControllerImp extends LoginController {
             response['data']['users_phone'],
           );
           services.sharedPref.setString("step", '2');
+          FirebaseMessaging.instance.subscribeToTopic("users");
+          FirebaseMessaging.instance.subscribeToTopic("users$userid");
           Get.offAllNamed(AppRoute.home);
         } else {
           Get.snackbar(AppStrings.warning, AppStrings.emailPass);

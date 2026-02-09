@@ -1,5 +1,6 @@
 import 'package:ecommerce/core/consts/routes.dart';
 import 'package:ecommerce/core/services/services.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -37,6 +38,9 @@ class SettingsControllerImp extends SettingsController {
 
   @override
   logout() {
+    String usersid = myServices.sharedPref.getString("id")!;
+    FirebaseMessaging.instance.unsubscribeFromTopic("users");
+    FirebaseMessaging.instance.unsubscribeFromTopic("users$usersid");
     myServices.sharedPref.clear();
     Get.offAllNamed(AppRoute.login);
   }

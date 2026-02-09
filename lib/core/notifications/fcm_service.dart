@@ -1,8 +1,10 @@
 // lib/core/notifications/fcm_service.dart
 
 import 'dart:developer';
+import 'package:ecommerce/controller/orders/pending_controller.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:get/get.dart';
 import 'notification_helper.dart';
 
 @pragma('vm:entry-point')
@@ -25,10 +27,25 @@ class FCMService {
     // Get token
     await _getToken();
 
+    refreshPageNotification(data) {
+      print("=======================================================");
+      print(data["pageid"]);
+      print(data["pagename"]);
+      print(Get.currentRoute);
+      if (Get.currentRoute == "/pendingorders" &&
+          data["pagename"] == "refresh") {
+        PendingController controller = Get.find();
+        controller.refreshPage();
+      }
+    }
+
+    ;
+
     // Foreground message handling
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       log("Foreground Message: ${message.messageId}");
       NotificationHelper.showNotification(message);
+      refreshPageNotification(message.data);
     });
 
     // When app is opened from background by tapping a notification

@@ -3,6 +3,7 @@ import 'package:ecommerce/core/consts/colors.dart';
 import 'package:ecommerce/core/consts/imageassets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Settings extends StatelessWidget {
   const Settings({super.key});
@@ -48,6 +49,11 @@ class Settings extends StatelessWidget {
                   tiles: List.generate(controller.cardInfo.length, (index) {
                     return ListTile(
                       onTap: () {
+                        if (controller.cardInfo[index]["title"] ==
+                            "Contact us") {
+                          launchUrl(Uri.parse("tel:+201152660002"));
+                          return;
+                        }
                         if (controller.cardInfo[index]["isLogout"] == true) {
                           controller.logout();
                         } else if (controller.cardInfo[index]["route"] !=

@@ -4,6 +4,8 @@ import 'package:ecommerce/core/functions/handlingdata.dart';
 import 'package:ecommerce/core/services/services.dart';
 import 'package:ecommerce/data/datasource/remote/home_data.dart';
 import 'package:ecommerce/data/model/items_model.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -69,6 +71,7 @@ class HomeControllerImp extends HomeController {
   void onInit() {
     initialData();
     search = TextEditingController();
+    FirebaseMessaging.instance.subscribeToTopic("users");
     getData();
     super.onInit();
   }

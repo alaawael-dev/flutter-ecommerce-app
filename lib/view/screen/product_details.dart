@@ -39,7 +39,7 @@ class ProductDetails extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "${controller.itemModel.itemsName}",
+                        controller.itemModel.itemsName,
                         style: Theme.of(context).textTheme.headlineLarge!
                             .copyWith(color: AppColor.primarycolor),
                       ),
