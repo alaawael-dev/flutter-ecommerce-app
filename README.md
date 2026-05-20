@@ -1,87 +1,79 @@
-# Aura — E-commerce Mobile Application 🛒
+# Aura — E-Commerce Mobile Application
 
-Aura is a **full-featured e-commerce mobile application** built with **Flutter**, following **Clean Architecture** principles and using **GetX** for state management.
+Aura is a full-stack e-commerce mobile application built with Flutter, 
+following Clean Architecture principles across 25+ screens. Powered by a 
+custom PHP/MySQL RESTful backend with 30+ API endpoints, the app supports 
+three distinct user roles: customer, admin, and delivery agent.
 
-The application is powered by a **custom RESTful backend** and is designed to reflect real-world e-commerce workflows, roles, and scalability requirements.
+## Features
 
----
+### Authentication
+- Email sign-up and login via REST API
+- Secure token-based authentication
 
-## ✨ Features
+### Products & Browsing
+- Product listing with categories and filtering
+- Product detail pages with custom options
+- Ratings and reviews system
 
-### 👤 Authentication & Users
-- User login & signup
-- Secure authentication via backend APIs
-
-### 🛍 Products & Browsing
-- Product listing
-- Categories & filtering
-- Product details with custom options
-- Product ratings & reviews
-
-### ❤️ User Experience
-- Favorites / wishlist
+### User Experience
+- Wishlist / favourites
 - Shopping cart
 - Address management
-- Coupons & discounts
-- Push notifications
+- Coupon and discount support
+- Push notifications (Firebase Cloud Messaging)
 
-### 📦 Orders & Delivery
-- Order placement
-- Order history & order details
-- Order status updates
-- Delivery tracking
+### Orders & Delivery
+- Order placement and checkout flow
+- Order history and status tracking
+- Live delivery tracking with Google Maps, polylines, and real-time location updates
 
-### 🛠 Admin & Delivery
-- Admin application for managing products, categories, and orders
-- Delivery application for handling orders and tracking deliveries
+### Multi-Role System
+- **Customer app** — browse, order, track
+- **Admin app** — manage products, categories, and orders
+- **Delivery app** — handle assigned orders and update delivery status
 
----
+## Architecture
 
-## 🏗 Architecture
-This project follows **Clean Architecture**, separating the application into clear layers:
-- Presentation layer
-- Domain layer
-- Data layer
+Aura follows the **MVC (Model-View-Controller)** pattern:
 
-State management is handled using **GetX**, ensuring performance, scalability, and maintainability.
+- **Model** — data classes, API response models, local storage
+- **View** — Flutter screens and widgets
+- **Controller** — GetX controllers handling state and business logic
 
----
+State management is handled with **GetX**.
 
-## 🛠 Tech Stack
-- **Flutter**
-- **Dart**
-- **GetX**
-- **RESTful APIs**
-- **Clean Architecture**
 
----
+## Tech Stack
 
-## 🔗 Backend
-The backend for this application is implemented as a separate RESTful API:
+- Flutter / Dart
+- GetX (state management)
+- Clean Architecture
+- PHP / MySQL (custom REST API backend)
+- Firebase Cloud Messaging (push notifications)
+- Google Maps + Geolocator + Geocoding (live delivery tracking)
+- OpenStreetMap integration
+- SQLite + SharedPreferences (local caching)
+- QR Code scanning
 
-👉 https://github.com/alaawael-dev/ecommerce-backend
+## Backend
 
----
+The backend is implemented as a separate PHP/MySQL REST API:  
+https://github.com/alaawael-dev/ecommerce-backend
 
-## 🚀 Getting Started
+## Getting Started
+
 1. Clone the repository
 2. Run `flutter pub get`
-3. Configure the API base URL
-4. Run the app on an emulator or physical device
+3. Configure the API base URL in the environment config
+4. Run on an emulator or physical device
 
----
+## Purpose
 
-## 🚧 Project Status
-This project is **currently under active development**.  
-Core features and architecture are implemented, with ongoing improvements and feature enhancements.
+Built as a portfolio project to demonstrate:
 
----
-
-## 📌 Purpose
-This project was built to demonstrate:
-- Real-world e-commerce architecture
-- Full frontend–backend integration
-- Scalable Flutter application design
-- Multiple user roles (user, admin, delivery)
-
-⭐ If you find this project interesting, feel free to explore the code or reach out!
+- Full frontend-backend integration with a custom REST API
+- MVC architecture applied across a large-scale Flutter app
+- Multi-role system across three separate app experiences
+- Live delivery tracking with Google Maps and real-time location
+- Firebase push notifications end to end
